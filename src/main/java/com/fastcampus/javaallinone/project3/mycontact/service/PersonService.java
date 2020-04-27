@@ -61,4 +61,12 @@ public class PersonService {
 
         personRepository.save(person);
     }
+
+    @Transactional
+    public void delete(Long id) {
+        Person person = personRepository.findById(id).orElseThrow(() -> new RuntimeException("id가 존재하지 않습니다."));
+        person.setDeleted(true);
+
+        personRepository.save(person);
+    }
 }
