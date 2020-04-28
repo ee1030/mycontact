@@ -1,7 +1,6 @@
 package com.fastcampus.javaallinone.project3.mycontact.service;
 
 import com.fastcampus.javaallinone.project3.mycontact.domain.Person;
-import com.fastcampus.javaallinone.project3.mycontact.repository.BlockRepository;
 import com.fastcampus.javaallinone.project3.mycontact.repository.PersonRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +16,6 @@ class PersonServiceTest {
     private PersonService personService;
     @Autowired
     private PersonRepository personRepository;
-    @Autowired
-    private BlockRepository blockRepository;
-
-    @Test
-    void getPeopleExcludeBlocks() {
-        List<Person> result = personService.getPeopleExcludeBlocks();
-
-        assertThat(result.size()).isEqualTo(3);
-        assertThat(result.get(0).getName()).isEqualTo("John Wick");
-        assertThat(result.get(1).getName()).isEqualTo("King");
-        assertThat(result.get(2).getName()).isEqualTo("Harry");
-
-    }
 
     @Test
     void getPeopleByName() {
