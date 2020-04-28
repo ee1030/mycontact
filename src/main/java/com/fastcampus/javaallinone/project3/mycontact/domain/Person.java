@@ -36,7 +36,7 @@ public class Person {
 
     @Valid
     @Embedded
-    private Birthday birthDay;
+    private Birthday birthday;
 
     private String job;
 
@@ -64,13 +64,13 @@ public class Person {
         }
 
         if(personDto.getBirthday() != null) {
-            this.setBirthDay(Birthday.of(personDto.getBirthday()));
+            this.setBirthday(Birthday.of(personDto.getBirthday()));
         }
     }
 
     public Integer getAge() {
-        if(this.birthDay != null) {
-            return LocalDate.now().getYear() - this.birthDay.getYearOfBirthday() + 1;
+        if(this.birthday != null) {
+            return LocalDate.now().getYear() - this.birthday.getYearOfBirthday() + 1;
         }
         else {
             return null;
@@ -79,8 +79,8 @@ public class Person {
 
     public boolean isBirthdayToday() {
         return LocalDate.now().equals(LocalDate.of(
-                this.birthDay.getYearOfBirthday(),
-                this.birthDay.getMonthOfBirthday(),
-                this.birthDay.getDayOfBirthday()));
+                this.birthday.getYearOfBirthday(),
+                this.birthday.getMonthOfBirthday(),
+                this.birthday.getDayOfBirthday()));
     }
 }
