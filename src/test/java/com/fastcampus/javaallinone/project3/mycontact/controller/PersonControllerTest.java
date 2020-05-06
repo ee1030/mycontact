@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
@@ -65,16 +66,25 @@ class PersonControllerTest {
 
     @Test
     void postPerson() throws Exception {
+        PersonDto dto = PersonDto.of("John Wick", "Contract",
+                "New York", LocalDate.now(), "Killer", "010-1111-2222");
+
         mockMvc.perform(
                 MockMvcRequestBuilders.post("/api/person")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content("{\n" +
-                            "    \"name\" : \"John Wick2\",\n" +
-                            "    \"age\" : 35,\n" +
-                            "    \"bloodType\" : \"O\"    \n" +
-                            "}"))
+                    .content(toJsonString(dto)))
                 .andDo(print())
                 .andExpect(status().isCreated());
+
+        Person result = personRepository.findAll(Sort.by(Sort.Direction.DESC, "id")).get(0);
+        assertAll(
+                () -> assertThat(result.getName()).isEqualTo("John Wick"),
+                () -> assertThat(result.getHobby()).isEqualTo("Contract"),
+                () -> assertThat(result.getAddress()).isEqualTo("New York"),
+                () -> assertThat(result.getBirthday()).isEqualTo(Birthday.of(LocalDate.now())),
+                () -> assertThat(result.getJob()).isEqualTo("Killer"),
+                () -> assertThat(result.getPhoneNumber()).isEqualTo("010-1111-2222")
+        );
     }
 
     @Test
