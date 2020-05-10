@@ -13,6 +13,10 @@ import org.mockito.ArgumentMatcher;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,6 +32,18 @@ class PersonServiceTest {
     private PersonService personService;
     @Mock // 해당 대상이 되는 클래스에서 AutoWired 하는 클래스들은 대부분 Mock으로 만든다.
     private PersonRepository personRepository;
+
+    @Test
+    void getAll() {
+        when(personRepository.findAll(any(Pageable.class)))
+            .thenReturn(new PageImpl<>(Lists.newArrayList(new Person("John Wick"), new Person("King"), new Person("Jonathan"))));
+
+        Page<Person> result = personService.getAll(PageRequest.of(0, 3));
+        assertThat(result.getNumberOfElements()).isEqualTo(3);
+        assertThat(result.getContent().get(0).getName()).isEqualTo("John Wick");
+        assertThat(result.getContent().get(1).getName()).isEqualTo("King");
+        assertThat(result.getContent().get(2).getName()).isEqualTo("Jonathan");
+    }
 
     @Test
     void getPeopleByName() {
