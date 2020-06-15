@@ -9,6 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+// 생일 정보를 관리하기 위한 domain 클래스
 @Embeddable
 @Data
 @NoArgsConstructor

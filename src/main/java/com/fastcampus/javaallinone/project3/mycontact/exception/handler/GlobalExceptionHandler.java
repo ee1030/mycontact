@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/*전체적인 Exception 핸들러로써 Http status와 Error 메시지를 같이 전달하여 사용자에게 표시한다.*/
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {

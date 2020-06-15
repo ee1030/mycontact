@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
+// 입력받은 데이터를 도메인 계층으로 전달하기 위한 클래스
 @Data
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "of")

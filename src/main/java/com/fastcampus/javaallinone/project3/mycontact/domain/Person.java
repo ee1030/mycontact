@@ -13,6 +13,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
+// 지인 정보를 저장하기 위한 domain 클래스
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,10 +22,14 @@ import java.time.LocalDate;
 @Data
 @Where(clause = "deleted = false")
 public class Person {
+    /*
+    * 기본 키인 id 값은 유저가 직접 입력하지 않고 자동적으로 생성되게 하였다.
+    */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /*이름 값은 null 값이나 비어있지 않도록 어노테이션을 사용하여 유효성 검사를 실시한다.*/
     @NonNull
     @NotEmpty
     @Column(nullable = false)
@@ -66,7 +71,7 @@ public class Person {
         if(personDto.getBirthday() != null) {
             this.setBirthday(Birthday.of(personDto.getBirthday()));
         }
-    }
+    } // StringUtils 를 사용하여 Dto에 있는 값이 비어있지 않은 경우 Dto에 있는 값을 가져온다.
 
     public Integer getAge() {
         if(this.birthday != null) {
@@ -75,7 +80,7 @@ public class Person {
         else {
             return null;
         }
-    }
+    } // 나이는 Birthday 객체의 연도 값을 가져와 현재 연도와 비교하여 구하도록 한다.
 
     public boolean isBirthdayToday() {
         return LocalDate.now().equals(LocalDate.of(

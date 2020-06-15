@@ -22,13 +22,13 @@ import org.springframework.web.context.WebApplicationContext;
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/*대부분의 테스트는 MockMvc를 이용하여 실행하였으며 Dto의 값을 Json String 값으로 변환하여 JsonPath와 비교하여 검증하였습니다.*/
 @Slf4j
 @SpringBootTest
 @Transactional
@@ -214,5 +214,5 @@ class PersonControllerTest {
 
     private String toJsonString(PersonDto personDto) throws JsonProcessingException {
         return objectMapper.writeValueAsString(personDto);
-    }
+    } // 전달받은 personDto 데이터를 Json 형식으로 변환하는 기능
 }

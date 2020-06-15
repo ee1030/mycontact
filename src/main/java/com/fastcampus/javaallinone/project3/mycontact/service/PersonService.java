@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/*서비스 로직으로써 실질적인 프로그램의 로직이 담겨있는 클래스*/
 @Service
 @Slf4j
 public class PersonService {

@@ -6,6 +6,7 @@ import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 
+/*Exception 이 발생 했을때 어떤 값을 넘겨줄지 정해놓은 클래스*/
 @Data
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ErrorResponse {
