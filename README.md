@@ -14,10 +14,10 @@ Spring.io를 이용하여 스프링 부트 프로젝트를 생성하는 방법�
 ![mycontact Logic](https://user-images.githubusercontent.com/51356655/84643227-830e4000-af38-11ea-996b-9a4559c6be57.jpeg)
 
 ## 주요 기능
-지인정보 생성
-지인정보 검색
-지인정보 수정
-지인정보 삭제(Soft Delete)
+- 지인정보 생성
+- 지인정보 검색(모든 정보, 이름검색, id 검색)
+- 지인정보 수정
+- 지인정보 삭제(Soft Delete)
 
 
 ## 학습 내용
