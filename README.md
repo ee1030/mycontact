@@ -13,9 +13,11 @@ Spring.io를 이용하여 스프링 부트 프로젝트를 생성하는 방법�
 ## 프로그램 로직
 ![mycontact Logic](https://user-images.githubusercontent.com/51356655/84643227-830e4000-af38-11ea-996b-9a4559c6be57.jpeg)
 
-## 사용법
-API들만 구현하여 뷰 구성이 없으므로 서버를 실행하고 localHost에 접속하여 URL을 입력하는 방법으로 기능을 수행하거나, 터미널에서 Http 명령어를
-이용하여 기능을 수행합니다.
+## 주요 기능
+지인정보 생성
+지인정보 검색
+지인정보 수정
+지인정보 삭제(Soft Delete)
 
 
 ## 학습 내용
